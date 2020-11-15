@@ -16,8 +16,18 @@ def print_shape(df_list):
         print("{}".format(df.shape))
 
 
+# Print all columns containing a null value
+def check_null_columns(df_list):
+    for df in df_list:
+        print("{}".format(df[df.columns[~df.isnull().all()]]))
+
+
 # Print Pearson Correlation Coefficent and P-Value for input columns
 def pval_pearson_coef(column1, column2):
     pearson_coefficient, p_value = stats.pearsonr(column1, column2)
     print("Pearson Correlation cofficient is {}".format(pearson_coefficient))
     print("P-Value is {}".format(p_value))
+    if p_value > 0.05:
+        print("Null cannot be rejected")
+    else:
+        print("Null can be rejected!!")
