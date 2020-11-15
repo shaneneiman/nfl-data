@@ -25,8 +25,8 @@ def check_null_columns(df_list):
 # Print Pearson Correlation Coefficent and P-Value for input columns
 def pval_pearson_coef(column1, column2):
     pearson_coefficient, p_value = stats.pearsonr(column1, column2)
-    print("Pearson Correlation cofficient is {}".format(pearson_coefficient))
-    print("P-Value is {}".format(p_value))
+    print("Pearson Correlation cofficient for {} is {}".format(column1.name, pearson_coefficient))
+    print("P-Value for {} is {}".format(column1.name, p_value))
     if p_value > 0.05:
         print("Null cannot be rejected")
     else:
